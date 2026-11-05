@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>食譜所 RECIPE LAB</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JavaScript -->
+    <script src="js/recipes.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- =================================
+         PAGE 01：首頁
+    ================================== -->
+
+    <section id="page-home" class="page active">
+
+        <main class="home-main">
+
+            <!-- 中央招牌 Logo -->
+            <div class="home-logo-area">
+                <img
+                    src="img/logo/logo.png"
+                    alt="食譜所 RECIPE LAB 餐盤刀叉招牌"
+                    class="home-logo"
+                >
+            </div>
+
+            <!-- 首頁標語 -->
+            <h1 class="home-slogan">
+                挑選食材，遇見食譜！
+            </h1>
+
+            <!-- 開始按鈕 -->
+            <button
+                id="start-btn"
+                class="main-button"
+                type="button"
+            >
+                START →
+            </button>
+
+        </main>
+
+        <!-- 首頁 Footer -->
+        <footer class="site-footer">
+
+            <div class="footer-brand">
+                食譜所 RECIPE LAB
+            </div>
+
+            <div class="footer-author">
+                NTUE 111419031 熊芷妍
+            </div>
+
+            <!-- 僅作為裝飾，目前不設定跳轉 -->
+            <div class="footer-social">
+
+                <span class="social-icon" aria-label="Instagram">
+                    IG
+                </span>
+
+                <span class="social-icon" aria-label="Facebook">
+                    f
+                </span>
+
+            </div>
+
+        </footer>
+
+    </section>
+
+
+    <!-- =================================
+         PAGE 02：食材選取頁
+    ================================== -->
+
+    <section id="page-select" class="page">
+
+        <!-- 橫向分類瀏覽區 -->
+        <div id="category-track" class="category-track">
+
+            <!-- 第一區：主食 -->
+            <section class="category-panel" data-category="staple">
+
+                <div class="category-sign">
+                    <h2>主食</h2>
+                </div>
+
+                <div class="ingredient-shelf">
+
+                    <button class="ingredient-card" data-ingredient="白米">
+                        <img src="img/ingredients/rice.png" alt="白米">
+                        <span>白米</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="麵類">
+                        <img src="img/ingredients/noodles.png" alt="麵類">
+                        <span>麵類</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="馬鈴薯泥">
+                        <img src="img/ingredients/mashed-potato.png" alt="馬鈴薯泥">
+                        <span>馬鈴薯泥</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="穀物">
+                        <img src="img/ingredients/grains.png" alt="穀物">
+                        <span>穀物</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- 第二區：蛋白質 -->
+            <section class="category-panel" data-category="protein">
+
+                <div class="category-sign">
+                    <h2>蛋白質</h2>
+                </div>
+
+                <div class="ingredient-shelf">
+
+                    <button class="ingredient-card" data-ingredient="豬肉">
+                        <img src="img/ingredients/pork.png" alt="豬肉">
+                        <span>豬肉</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="雞肉">
+                        <img src="img/ingredients/chicken.png" alt="雞肉">
+                        <span>雞肉</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="牛肉">
+                        <img src="img/ingredients/beef.png" alt="牛肉">
+                        <span>牛肉</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="魚肉">
+                        <img src="img/ingredients/fish.png" alt="魚肉">
+                        <span>魚肉</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="豆腐">
+                        <img src="img/ingredients/tofu.png" alt="豆腐">
+                        <span>豆腐</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="雞蛋">
+                        <img src="img/ingredients/egg.png" alt="雞蛋">
+                        <span>雞蛋</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- 第三區：蔬菜 -->
+            <section class="category-panel" data-category="vegetable">
+
+                <div class="category-sign">
+                    <h2>蔬菜</h2>
+                </div>
+
+                <div class="ingredient-shelf">
+
+                    <button class="ingredient-card" data-ingredient="高麗菜">
+                        <img src="img/ingredients/cabbage.png" alt="高麗菜">
+                        <span>高麗菜</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="青花菜">
+                        <img src="img/ingredients/broccoli.png" alt="青花菜">
+                        <span>青花菜</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="白菜">
+                        <img src="img/ingredients/chinese-cabbage.png" alt="白菜">
+                        <span>白菜</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="菠菜">
+                        <img src="img/ingredients/spinach.png" alt="菠菜">
+                        <span>菠菜</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="空心菜">
+                        <img src="img/ingredients/water-spinach.png" alt="空心菜">
+                        <span>空心菜</span>
+                    </button>
+
+                    <button class="ingredient-card" data-ingredient="小黃瓜">
+                        <img src="img/ingredients/cucumber.png" alt="小黃瓜">
+                        <span>小黃瓜</span>
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- 第四區：飲食偏好 -->
+            <section class="category-panel preference-panel"
+                     data-category="preference">
+
+                <div class="category-sign">
+                    <h2>飲食偏好</h2>
+                </div>
+
+                <div class="preference-container">
+
+                    <p>請選擇不喜歡的食材：</p>
+
+                    <label class="preference-option">
+                        <input type="checkbox" value="蔥" class="avoid-option">
+                        <span>不要蔥</span>
+                    </label>
+
+                    <label class="preference-option">
+                        <input type="checkbox" value="蒜" class="avoid-option">
+                        <span>不要蒜</span>
+                    </label>
+
+                    <label class="preference-option">
+                        <input type="checkbox" value="香菜" class="avoid-option">
+                        <span>不要香菜</span>
+                    </label>
+
+                </div>
+
+                <!-- 前往結果頁 -->
+                <button
+                    id="confirm-selection-btn"
+                    class="main-button next-button"
+                    type="button"
+                >
+                    NEXT →
+                </button>
+
+            </section>
+
+        </div>
+
+        <!-- 滑鼠靜止時顯示的操作提示 -->
+        <div id="scroll-hint" class="scroll-hint">
+            滑動滑鼠滾輪以左右選取食材
+        </div>
+
+        <!-- 固定於畫面底部的購物籃 -->
+        <div id="shopping-basket-area" class="shopping-basket-area">
+
+            <img
+                src="img/ui/basket.png"
+                alt="紅色購物籃"
+                class="basket-image"
+            >
+
+            <!-- JavaScript 將選取食材放在此處 -->
+            <div id="basket-items" class="basket-items">
+
+            </div>
+
+        </div>
+
+        <!-- 分類頁面進度提示 -->
+        <div class="category-progress">
+            <span id="category-progress-text">01 / 04</span>
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         PAGE 03：食譜推薦結果頁
+    ================================== -->
+
+    <section id="page-result" class="page">
+
+        <main class="result-layout">
+
+            <!-- 左側：收據式食材清單 -->
+            <aside class="receipt">
+
+                <h2>RECIPE LAB</h2>
+
+                <div class="receipt-divider"></div>
+
+                <h3>YOUR INGREDIENTS</h3>
+
+                <!-- 顯示使用者選取的食材 -->
+                <div id="result-ingredients" class="result-ingredients">
+
+                </div>
+
+                <div class="receipt-divider"></div>
+
+                <div id="match-information" class="match-information">
+
+                </div>
+
+                <div class="receipt-barcode">
+                    RECIPE LAB
+                </div>
+
+            </aside>
+
+
+            <!-- 右側：食譜資訊 -->
+            <div class="recipe-display">
+
+                <div class="recipe-heading">
+
+                    <span id="recipe-number">
+                        RECIPE 01
+                    </span>
+
+                    <h1 id="recipe-name">
+                        等待推薦食譜
+                    </h1>
+
+                </div>
+
+
+                <!-- 食譜圖片 -->
+                <div class="recipe-image-area">
+
+                    <img
+                        id="recipe-image"
+                        src="img/ui/recipe-placeholder.png"
+                        alt="推薦食譜圖片"
+                    >
+
+                </div>
+
+
+                <!-- 食譜簡介 -->
+                <p id="recipe-description" class="recipe-description">
+
+                </p>
+
+
+                <!-- 額外需要的材料 -->
+                <div class="recipe-materials">
+
+                    <h3>料理所需材料</h3>
+
+                    <div id="recipe-ingredients">
+
+                    </div>
+
+                </div>
+
+
+                <!-- 料理步驟 -->
+                <div class="recipe-steps">
+
+                    <h3>COOKING STEPS</h3>
+
+                    <ol id="recipe-steps-list">
+
+                    </ol>
+
+                </div>
+
+
+                <!-- 使用者回饋 -->
+                <div class="recipe-feedback">
+
+                    <span>喜歡這道料理嗎？</span>
+
+                    <button
+                        class="feedback-btn"
+                        data-feedback="like"
+                        type="button"
+                        aria-label="喜歡這道料理"
+                    >
+                        😊
+                    </button>
+
+                    <button
+                        class="feedback-btn"
+                        data-feedback="dislike"
+                        type="button"
+                        aria-label="不喜歡這道料理"
+                    >
+                        😕
+                    </button>
+
+                </div>
+
+
+                <!-- 下一道食譜按鈕 -->
+<button
+    id="recipe-next-btn"
+    class="main-button next-button"
+    type="button"
+>
+    NEXT
+</button>
+
+<!-- 重新開始按鈕 -->
+<button
+    id="recipe-restart-btn"
+    class="main-button next-button restart-button"
+    type="button"
+>
+    RESTART
+</button>
+
+
+            </div>
+
+        </main>
+
+    </section>
+
+<script src="js/recipes.js" defer></script>
+<script src="js/script.js" defer></script>
+
+</body>
+</html>

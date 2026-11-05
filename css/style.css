@@ -1,0 +1,2255 @@
+
+
+/* =====================================================
+
+   RECIPE LAB
+
+   全站共用設定
+
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800;900&family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+
+    --cream: #FFF6DC;
+
+    --cream-dark: #F5E7C6;
+
+    --pink: #F16B80;
+
+    --pink-dark: #D94F68;
+
+    --red: #D95752;
+
+    --brown: #624337;
+
+    --brown-dark: #493027;
+
+    --orange: #E9A36D;
+
+    --green: #78966C;
+
+    --white: #FFFFFF;
+
+    --font-main: 'Noto Sans TC', sans-serif;
+
+    --font-english: 'Nunito', sans-serif;
+
+    --footer-height: 64px;
+
+    --basket-height: 165px;
+
+}
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+html {
+
+    width: 100%;
+
+    height: 100%;
+
+    scroll-behavior: smooth;
+
+}
+
+body {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    font-family: var(--font-main);
+
+    color: var(--brown);
+
+    background: var(--cream);
+
+}
+
+button {
+
+    font-family: inherit;
+
+}
+
+button:focus-visible,
+
+input:focus-visible {
+
+    outline: 3px solid #5B91D1;
+
+    outline-offset: 4px;
+
+}
+
+img {
+
+    display: block;
+
+    max-width: 100%;
+
+}
+
+.page {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+}
+
+.page.active {
+
+    display: block;
+
+}
+
+/* =====================================================
+
+   PAGE 01：首頁
+
+===================================================== */
+
+/* 淺黃色波點背景 */
+
+#page-home {
+
+    background-color: var(--cream);
+
+    background-image:
+
+        radial-gradient(
+
+            circle,
+
+            rgba(225, 184, 104, 0.36) 2px,
+
+            transparent 2.5px
+
+        );
+
+    background-size: 27px 27px;
+
+    overflow: hidden;
+
+}
+
+.home-main {
+    position: relative;
+    width: 100%;
+    height: calc(100% - var(--footer-height));
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 20px 20px;
+}
+
+/* Logo 區域：整個區域貼齊視窗頂端 */
+.home-logo-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    max-height: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    pointer-events: none;
+
+    animation: logoDrop 1.15s cubic-bezier(.16,.85,.35,1.15)
+               0.15s both;
+}
+
+/* Logo 放大，圖片上緣從視窗最頂端開始 */
+.home-logo {
+    display: block;
+    width: min(840px, 95vw);
+    max-width: 95vw;
+    max-height: 72vh;
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
+}
+
+/* 招牌下降動畫 */
+
+@keyframes logoDrop {
+
+    0% {
+
+        opacity: 0;
+
+        transform: translateY(-110vh) rotate(-5deg);
+
+    }
+
+    75% {
+
+        opacity: 1;
+
+        transform: translateY(10px) rotate(2deg);
+
+    }
+
+    88% {
+
+        transform: translateY(-5px) rotate(-1deg);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform: translateY(0) rotate(0);
+
+    }
+
+}
+
+/* 標語 */
+
+.home-slogan {
+
+    /* 讓標語排在放大的招牌下方 */
+    margin-top: min(60vh, 560px);
+    position: relative;
+    z-index: 2;
+
+    font-size: clamp(22px, 3vw, 36px);
+
+    font-weight: 900;
+
+    letter-spacing: 5px;
+
+    color: var(--brown-dark);
+
+    animation: sloganDrop 0.8s ease-out 1s both;
+
+}
+
+@keyframes sloganDrop {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-35px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* START / NEXT 共用按鈕 */
+
+.main-button {
+
+    border: none;
+
+    border-radius: 50px;
+
+    padding: 14px 46px;
+
+    background: var(--pink);
+
+    color: var(--white);
+
+    font-family: var(--font-english);
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 7px 0 var(--pink-dark),
+
+        0 10px 18px rgba(140, 60, 60, 0.18);
+
+    transition:
+
+        background 0.25s ease,
+
+        box-shadow 0.25s ease,
+
+        transform 0.25s ease;
+
+    animation: buttonBreathe 2.5s ease-in-out 1.8s infinite;
+
+}
+
+@keyframes buttonAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform: scale(0.5);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+@keyframes breathe {
+
+    0%, 100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.055);
+
+    }
+
+}
+
+/* =========================================
+
+   按鈕：持續微幅呼吸動畫
+
+========================================= */
+
+@keyframes buttonBreathe {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.045);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+.main-button:hover {
+
+    background: #F78395;
+
+    box-shadow:
+
+        0 9px 0 var(--pink-dark),
+
+        0 14px 22px rgba(140, 60, 60, 0.2);
+
+    animation-play-state: paused;
+
+    transform: scale(1.08);
+
+}
+
+.main-button:active {
+
+    transform: scale(0.96);
+
+    box-shadow: 0 3px 0 var(--pink-dark);
+
+}
+
+/* START 按鈕位置 */
+
+#start-btn {
+
+    position: relative;
+    z-index: 2;
+    margin-top: 36px;
+
+}
+
+/* 首頁 Footer */
+
+.site-footer {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: var(--footer-height);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-around;
+
+    padding: 8px 25px;
+
+    background: var(--red);
+
+    color: white;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+.footer-brand {
+
+    font-family: var(--font-english), var(--font-main);
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+}
+
+.footer-author {
+
+    font-size: 13px;
+
+}
+
+.footer-social {
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+}
+
+.social-icon {
+
+    width: 29px;
+
+    height: 29px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 2px solid white;
+
+    border-radius: 50%;
+
+    font-family: var(--font-english);
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+}
+
+/* =====================================================
+
+   PAGE 02：食材選取頁
+
+===================================================== */
+
+#page-select {
+
+    background-color: #EBC49D;
+
+    background-image:
+
+        linear-gradient(
+
+            0deg,
+
+            transparent 24%,
+
+            rgba(135, 83, 54, 0.12) 25%,
+
+            rgba(135, 83, 54, 0.12) 26%,
+
+            transparent 27%,
+
+            transparent 74%,
+
+            rgba(135, 83, 54, 0.12) 75%,
+
+            rgba(135, 83, 54, 0.12) 76%,
+
+            transparent 77%
+
+        ),
+
+        linear-gradient(
+
+            90deg,
+
+            transparent 24%,
+
+            rgba(135, 83, 54, 0.12) 25%,
+
+            rgba(135, 83, 54, 0.12) 26%,
+
+            transparent 27%,
+
+            transparent 74%,
+
+            rgba(135, 83, 54, 0.12) 75%,
+
+            rgba(135, 83, 54, 0.12) 76%,
+
+            transparent 77%
+
+        );
+
+    background-size: 110px 65px;
+
+    overflow: hidden;
+
+}
+
+/* 橫向分類容器 */
+
+.category-track {
+
+    display: flex;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+
+    scroll-behavior: smooth;
+
+    overscroll-behavior-x: contain;
+
+    scrollbar-width: none;
+
+}
+
+.category-track::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+/* 四個分類區域 */
+
+.category-panel {
+
+    position: relative;
+
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    height: 100%;
+
+    scroll-snap-align: start;
+
+    scroll-snap-stop: always;
+
+    padding: 100px 5% calc(var(--basket-height) + 35px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+/* 分類招牌 */
+
+.category-sign {
+
+    position: absolute;
+
+    top: 24px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    min-width: 170px;
+
+    padding: 12px 35px;
+
+    text-align: center;
+
+    background: #F5E4BE;
+
+    border: 4px solid #9E4B3F;
+
+    border-radius: 8px;
+
+    box-shadow: 4px 5px 0 rgba(110, 55, 40, 0.2);
+
+}
+
+.category-sign h2 {
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    color: var(--brown);
+
+    letter-spacing: 5px;
+
+}
+
+/* 食材層架容器 */
+
+.ingredient-shelf {
+
+    position: relative;
+
+    width: min(1050px, 100%);
+
+    height: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+
+    gap: 18px 35px;
+
+    align-items: center;
+
+    justify-items: center;
+
+    padding: 20px 25px;
+
+}
+
+/* =========================================
+   PAGE 02：主食專屬 2 × 2 排列
+========================================= */
+
+.category-panel[data-category="staple"] .ingredient-shelf {
+
+    width: min(900px, 100%);
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+
+    gap: 15px 100px;
+
+    justify-items: center;
+
+    align-items: center;
+
+    margin: 0 auto;
+
+}
+
+/* 層架背景效果 */
+
+.ingredient-shelf::before,
+
+.ingredient-shelf::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 17px;
+
+    background: #BD5149;
+
+    border: 3px solid #8E3935;
+
+    border-radius: 4px;
+
+    box-shadow:
+
+        0 7px 0 rgba(100, 55, 40, 0.15);
+
+}
+
+.ingredient-shelf::before {
+
+    top: 49%;
+
+}
+
+.ingredient-shelf::after {
+
+    bottom: -5px;
+
+}
+
+/* 食材按鈕 */
+
+.ingredient-card {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    height: 100%;
+
+    max-height: 300px;
+
+    border: none;
+
+    background: transparent;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    cursor: pointer;
+
+    transition:
+
+        transform 0.25s ease,
+
+        filter 0.25s ease;
+
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+/* 食材圖片：放大約兩倍 */
+
+.ingredient-card img {
+
+    width: min(290px, 100%);
+
+    height: 250px;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.25s ease,
+        filter 0.25s ease;
+
+}
+
+/* 食材名稱 */
+
+.ingredient-card span {
+
+    margin-top: 5px;
+
+    padding: 5px 14px;
+
+    border-radius: 20px;
+
+    background: #FFF8E9;
+
+    color: var(--brown-dark);
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    opacity: 0;
+
+    transform: translateY(8px);
+
+    transition:
+
+        opacity 0.2s ease,
+
+        transform 0.2s ease;
+
+}
+
+/* Hover 效果 */
+
+.ingredient-card:hover {
+
+    transform: translateY(-5px);
+
+}
+
+.ingredient-card:hover img {
+
+    transform: scale(1.12);
+
+    filter: drop-shadow(0 8px 5px rgba(70, 45, 30, 0.18));
+
+}
+
+.ingredient-card:hover span {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+/* 已選取的食材 */
+
+.ingredient-card.selected {
+
+    opacity: 0.35;
+
+    filter: grayscale(0.5);
+
+}
+
+.ingredient-card.selected img {
+
+    transform: scale(0.85);
+
+}
+
+/* 偏好設定區域 */
+
+.preference-container {
+
+    width: min(550px, 90%);
+
+    margin-top: 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    padding: 30px;
+
+    background: #FFF8E9;
+
+    border: 5px solid #A35B48;
+
+    border-radius: 18px;
+
+    box-shadow: 8px 9px 0 rgba(100, 55, 40, 0.15);
+
+}
+
+.preference-container > p {
+
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+}
+
+.preference-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px 15px;
+
+    border: 2px solid #E7C7A6;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+
+        background 0.2s ease,
+
+        border-color 0.2s ease;
+
+}
+
+.preference-option:hover {
+
+    background: #FFE8E1;
+
+    border-color: var(--pink);
+
+}
+
+.preference-option input {
+
+    width: 23px;
+
+    height: 23px;
+
+    accent-color: var(--pink);
+
+    cursor: pointer;
+
+}
+
+/* 第四區 NEXT */
+
+.next-button {
+
+    position: absolute;
+
+    right: 45px;
+
+    bottom: calc(var(--basket-height) + 25px);
+
+}
+
+/* 購物籃固定區域 */
+
+.shopping-basket-area {
+
+    position: fixed;
+
+    z-index: 20;
+
+    left: 25px;
+
+    bottom: 10px;
+
+    width: 280px;
+
+    height: var(--basket-height);
+
+    pointer-events: none;
+
+}
+
+/* 購物籃圖片 */
+
+.basket-image {
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 5px 5px rgba(60, 35, 20, 0.15));
+
+}
+
+/* 購物籃內食材 */
+
+.basket-items {
+
+    position: absolute;
+
+    left: 10%;
+
+    top: 5%;
+
+    width: 80%;
+
+    height: 62%;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    align-items: center;
+
+    align-content: center;
+
+    gap: 2px;
+
+    pointer-events: auto;
+
+    overflow: hidden;
+
+}
+
+/* 購物籃中的食材 */
+
+.basket-item {
+
+    width: 48px;
+
+    height: 48px;
+
+    object-fit: contain;
+
+    cursor: pointer;
+
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+
+    transition: transform 0.2s ease;
+
+}
+
+.basket-item:hover {
+
+    transform: scale(1.2);
+
+}
+
+/* 分類進度 */
+
+.category-progress {
+
+    position: fixed;
+
+    z-index: 15;
+
+    right: 22px;
+
+    top: 18px;
+
+    padding: 8px 15px;
+
+    background: #FFF8E9;
+
+    border: 2px solid #A35B48;
+
+    border-radius: 30px;
+
+    font-family: var(--font-english);
+
+    font-weight: 900;
+
+    font-size: 14px;
+
+    pointer-events: none;
+
+}
+
+/* =====================================================
+
+   PAGE 03：食譜結果頁
+
+===================================================== */
+
+#page-result {
+
+    overflow-y: auto;
+
+    background-color: #FFF7E9;
+
+    background-image:
+
+        linear-gradient(
+
+            rgba(210, 175, 140, 0.12) 1px,
+
+            transparent 1px
+
+        ),
+
+        linear-gradient(
+
+            90deg,
+
+            rgba(210, 175, 140, 0.12) 1px,
+
+            transparent 1px
+
+        );
+
+    background-size: 24px 24px;
+
+}
+
+/* 結果頁主要布局 */
+
+.result-layout {
+
+    width: min(1250px, 94%);
+
+    min-height: 100%;
+
+    margin: 0 auto;
+
+    padding: 35px 0;
+
+    display: grid;
+
+    grid-template-columns: 280px minmax(0, 1fr);
+
+    gap: 35px;
+
+    align-items: start;
+
+}
+
+/* 左側收據 */
+
+.receipt {
+
+    position: sticky;
+
+    top: 25px;
+
+    min-height: 550px;
+
+    padding: 28px 23px;
+
+    background: #FFFDF7;
+
+    border: 1px solid #E7D9C5;
+
+    box-shadow:
+
+        4px 6px 14px rgba(100, 65, 40, 0.12);
+
+    color: #59483C;
+
+    text-align: center;
+
+}
+
+/* 收據標題 */
+
+.receipt h2 {
+
+    font-family: var(--font-english);
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+}
+
+.receipt h3 {
+
+    margin: 18px 0 15px;
+
+    font-family: var(--font-english);
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+}
+
+/* 虛線分隔 */
+
+.receipt-divider {
+
+    margin: 16px 0;
+
+    border-top: 2px dashed #BCA995;
+
+}
+
+/* 已選食材清單 */
+
+.result-ingredients {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    text-align: left;
+
+}
+
+.result-ingredient-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
+/* 符合程度 */
+
+.match-information {
+
+    text-align: left;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+
+}
+
+.match-percent {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    color: var(--green);
+
+}
+
+/* 條碼裝飾 */
+
+.receipt-barcode {
+
+    margin-top: 35px;
+
+    padding: 12px 0;
+
+    border-top: 3px solid #59483C;
+
+    border-bottom: 3px solid #59483C;
+
+    font-family: var(--font-english);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+}
+
+/* 右側食譜區 */
+
+.recipe-display {
+
+    position: relative;
+
+    min-width: 0;
+
+    padding: 30px 35px 40px;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 3px solid #E9D4B9;
+
+    border-radius: 18px;
+
+    box-shadow: 5px 7px 0 rgba(120, 80, 45, 0.1);
+
+}
+
+/* 食譜標題 */
+
+.recipe-heading {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+
+}
+
+.recipe-heading > span {
+
+    font-family: var(--font-english);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    color: var(--pink-dark);
+
+}
+
+.recipe-heading h1 {
+
+    margin-top: 8px;
+
+    font-size: clamp(26px, 3vw, 39px);
+
+    font-weight: 900;
+
+    color: var(--brown-dark);
+
+}
+
+/* 食譜圖片 */
+
+.recipe-image-area {
+
+    width: 100%;
+
+    height: 300px;
+
+    overflow: hidden;
+
+    background: #F4E7D6;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.recipe-image-area img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+/* 食譜簡介 */
+
+.recipe-description {
+
+    margin: 22px 0;
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    color: #755B4D;
+
+}
+
+/* 食材區域 */
+
+.recipe-materials,
+
+.recipe-steps {
+
+    margin-top: 25px;
+
+}
+
+.recipe-materials h3,
+
+.recipe-steps h3 {
+
+    margin-bottom: 12px;
+
+    font-size: 19px;
+
+    font-weight: 900;
+
+    color: var(--brown);
+
+}
+
+/* 食譜材料 */
+
+#recipe-ingredients {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+}
+
+.recipe-tag {
+
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    background: #F9E6D7;
+
+    border-radius: 25px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+/* 料理步驟 */
+
+#recipe-steps-list {
+
+    padding-left: 25px;
+
+    line-height: 2;
+
+    font-size: 15px;
+
+}
+
+#recipe-steps-list li {
+
+    padding-left: 5px;
+
+    margin-bottom: 5px;
+
+}
+
+/* 回饋區域 */
+
+.recipe-feedback {
+
+    margin-top: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+.feedback-btn {
+
+    width: 48px;
+
+    height: 48px;
+
+    border: 2px solid #EBC5A9;
+
+    border-radius: 50%;
+
+    background: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    transition:
+
+        transform 0.2s ease,
+
+        background 0.2s ease,
+
+        border-color 0.2s ease;
+
+}
+
+.feedback-btn:hover {
+
+    transform: scale(1.15);
+
+    background: #FFF0E8;
+
+}
+
+.feedback-btn.selected {
+
+    background: #FFE0D9;
+
+    border-color: var(--pink);
+
+    transform: scale(1.12);
+
+}
+
+/* 結果頁 NEXT */
+
+#recipe-next-btn {
+
+    display: block;
+
+    margin: 30px auto 0;
+
+}
+
+/* 無推薦結果 */
+
+.no-recipe-message {
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: #FFF1E9;
+
+    border-radius: 14px;
+
+    line-height: 2;
+
+}
+
+.no-recipe-message h2 {
+
+    margin-bottom: 12px;
+
+}
+
+/* =====================================================
+
+   共用動畫與輔助樣式
+
+===================================================== */
+
+/* 頁面淡入 */
+
+.page.active {
+
+    animation: pageFadeIn 0.35s ease;
+
+}
+
+@keyframes pageFadeIn {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+/* 食材飛入購物籃的圖片 */
+
+.flying-ingredient {
+
+    position: fixed;
+
+    z-index: 1000;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    transition:
+
+        left 0.45s cubic-bezier(.2,.8,.3,1),
+
+        top 0.45s cubic-bezier(.2,.8,.3,1),
+
+        width 0.45s ease,
+
+        height 0.45s ease,
+
+        opacity 0.45s ease;
+
+}
+
+/* 減少動態效果的使用者設定 */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+
+    *::before,
+
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
+
+/* =====================================================
+
+   RWD：平板
+
+===================================================== */
+
+@media (max-width: 900px) {
+
+    :root {
+
+        --basket-height: 125px;
+
+    }
+
+    .home-logo-area {
+
+        width: min(350px, 65vw);
+
+    }
+
+    .ingredient-shelf {
+
+        gap: 10px 15px;
+
+        padding: 15px;
+
+    }
+
+    .ingredient-card img {
+
+        height: 100px;
+
+    }
+
+    .shopping-basket-area {
+
+        width: 220px;
+
+    }
+
+    .result-layout {
+
+        grid-template-columns: 220px minmax(0, 1fr);
+
+        gap: 20px;
+
+    }
+
+    .receipt {
+
+        padding: 22px 15px;
+
+    }
+
+    .recipe-display {
+
+        padding: 25px 20px;
+
+    }
+
+    .recipe-image-area {
+
+        height: 240px;
+
+    }
+
+}
+
+/* =====================================================
+
+   RWD：手機
+
+===================================================== */
+
+@media (max-width: 600px) {
+
+    :root {
+
+        --footer-height: 90px;
+
+        --basket-height: 105px;
+
+    }
+
+    .home-main {
+
+        height: calc(100% - var(--footer-height));
+
+    }
+
+    .home-logo-area {
+
+        width: min(310px, 80vw);
+
+    }
+
+    .home-slogan {
+
+        margin-top: 42vh;
+        font-size: 22px;
+
+        letter-spacing: 2px;
+
+        text-align: center;
+
+    }
+
+    #start-btn {
+
+        margin-top: 28px;
+
+        font-size: 21px;
+
+    }
+
+    .site-footer {
+
+        height: var(--footer-height);
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 5px 18px;
+
+        padding: 8px;
+
+    }
+
+    .footer-brand {
+
+        font-size: 14px;
+
+    }
+
+    .footer-author {
+
+        font-size: 11px;
+
+    }
+
+    .social-icon {
+
+        width: 24px;
+
+        height: 24px;
+
+    }
+
+    .category-panel {
+
+        padding: 90px 3% calc(var(--basket-height) + 25px);
+
+    }
+
+    .category-sign {
+
+        top: 15px;
+
+        min-width: 135px;
+
+        padding: 8px 20px;
+
+    }
+
+    .category-sign h2 {
+
+        font-size: 22px;
+
+    }
+
+    .ingredient-shelf {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+
+        gap: 5px 10px;
+
+        padding: 10px;
+
+    }
+
+    .ingredient-card img {
+
+        height: 75px;
+
+    }
+
+    .ingredient-card span {
+
+        font-size: 13px;
+
+        opacity: 1;
+
+        transform: none;
+
+        padding: 3px 10px;
+
+    }
+
+    .preference-container {
+
+        margin-top: 25px;
+
+        padding: 20px;
+
+    }
+
+    .preference-container > p {
+
+        font-size: 16px;
+
+    }
+
+    .preference-option {
+
+        font-size: 16px;
+
+    }
+
+    .shopping-basket-area {
+
+        left: 5px;
+
+        bottom: 5px;
+
+        width: 165px;
+
+        height: var(--basket-height);
+
+    }
+
+    .basket-items {
+
+        gap: 0;
+
+    }
+
+    .basket-item {
+
+        width: 29px;
+
+        height: 29px;
+
+    }
+
+    .next-button {
+
+        right: 12px;
+
+        bottom: calc(var(--basket-height) + 12px);
+
+        padding: 10px 25px;
+
+        font-size: 19px;
+
+    }
+
+    .category-progress {
+
+        top: 12px;
+
+        right: 10px;
+
+        font-size: 12px;
+
+    }
+
+    .result-layout {
+
+        display: flex;
+
+        flex-direction: column;
+
+        width: 92%;
+
+        gap: 20px;
+
+    }
+
+    .receipt {
+
+        position: relative;
+
+        top: 0;
+
+        width: 100%;
+
+        min-height: auto;
+
+    }
+
+    .recipe-display {
+
+        width: 100%;
+
+        padding: 20px 15px;
+
+    }
+
+    .recipe-image-area {
+
+        height: 210px;
+
+    }
+
+    .recipe-heading h1 {
+
+        font-size: 27px;
+
+    }
+
+    .recipe-feedback {
+
+        flex-wrap: wrap;
+
+    }
+
+}
+
+/* =========================================
+
+   PAGE 03：發票落下淡入動畫
+
+========================================= */
+
+@keyframes receiptDropFade {
+
+    0% {
+
+        opacity: 0;
+
+        transform: translateY(-70px);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* 由 JavaScript 在進入結果頁時啟動 */
+
+.receipt.receipt-enter {
+
+    animation: receiptDropFade 1s ease-out both;
+
+}
+
+/* =========================================
+
+   PAGE 03：NEXT / RESTART 按鈕靠右排列
+
+========================================= */
+
+/* NEXT 與 RESTART 靠右、上下排列 */
+
+#recipe-next-btn,
+
+#recipe-restart-btn {
+
+    display: block;
+
+    position: relative;
+
+    width: 180px;
+
+    margin: 12px 0 12px auto;
+
+}
+
+/* RESTART 與 NEXT 保持適當間距 */
+
+#recipe-restart-btn {
+
+    margin-top: 12px;
+
+}
+
+/* 隱藏按鈕時不佔據空間 */
+
+#recipe-next-btn[hidden],
+
+#recipe-restart-btn[hidden],
+
+.feedback-btn[hidden] {
+
+    display: none !important;
+
+}
+
+/* =========================================
+   PAGE 02：滑鼠靜止操作提示
+========================================= */
+
+.scroll-hint {
+
+    position: fixed;
+
+    z-index: 25;
+
+    left: 330px;
+
+    bottom: 55px;
+
+    color: var(--brown-dark);
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.5s ease;
+
+}
+
+/* 滑鼠靜止時顯示 */
+.scroll-hint.show {
+
+    opacity: 0.3;
+
+}
+
+/* 平板 */
+@media (max-width: 900px) {
+
+    .scroll-hint {
+
+        left: 235px;
+
+        font-size: 16px;
+
+    }
+
+}
+
+/* 手機 */
+@media (max-width: 600px) {
+
+    .scroll-hint {
+
+        left: 175px;
+
+        right: 10px;
+
+        bottom: 25px;
+
+        font-size: 12px;
+
+        letter-spacing: 0;
+
+    }
+
+}
+
+/* =========================================
+   PAGE 03：放大左側發票
+========================================= */
+
+/* 發票欄位放大 */
+.result-layout {
+    grid-template-columns: 420px minmax(0, 1fr);
+    gap: 35px;
+}
+
+/* 發票本體 */
+.receipt {
+    width: 100%;
+    min-height: 650px;
+    padding: 42px 34px;
+}
+
+/* 發票主標題 */
+.receipt h2 {
+    font-size: 32px;
+    letter-spacing: 3px;
+}
+
+/* YOUR INGREDIENTS */
+.receipt h3 {
+    font-size: 18px;
+    margin: 23px 0 19px;
+}
+
+/* 已選食材 */
+.result-ingredient-row {
+    font-size: 17px;
+}
+
+/* 符合程度說明 */
+.match-information {
+    font-size: 16px;
+    line-height: 2;
+}
+
+/* 符合百分比 */
+.match-percent {
+    font-size: 34px;
+}
+
+/* 底部 RECIPE LAB 條碼裝飾 */
+.receipt-barcode {
+    font-size: 17px;
+    padding: 16px 0;
+    letter-spacing: 5px;
+}
+
+
+/* =========================================
+   PAGE 03：NEXT / RESTART 水平置中
+========================================= */
+
+#recipe-next-btn,
+#recipe-restart-btn {
+
+    display: block;
+
+    position: relative;
+
+    width: 180px;
+
+    margin: 18px auto !important;
+
+    text-align: center;
+
+}
+
+/* RESTART 與 NEXT 的間距 */
+#recipe-restart-btn {
+    margin-top: 18px !important;
+}
+
+/* 隱藏時不佔據空間 */
+#recipe-next-btn[hidden],
+#recipe-restart-btn[hidden] {
+    display: none !important;
+}
+
+
+/* 平板：發票適度縮小 */
+@media (min-width: 601px) and (max-width: 900px) {
+
+    .result-layout {
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .receipt {
+        padding: 28px 20px;
+        min-height: 550px;
+    }
+
+}
+
+/* 手機：維持上下排列 */
+@media (max-width: 600px) {
+
+    .result-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .receipt {
+        width: 100%;
+        min-height: auto;
+    }
+
+}
+
+/* =========================================
+   PAGE 03：修正 NEXT / RESTART 按鈕位置
+========================================= */
+
+/* 解除第二頁 next-button 的絕對定位 */
+#page-result #recipe-next-btn,
+#page-result #recipe-restart-btn {
+
+    position: relative !important;
+
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+
+    display: block;
+
+    width: 180px;
+
+    margin: 18px auto !important;
+
+    text-align: center;
+
+}
+
+/* RESTART 與 NEXT 保持間距 */
+#page-result #recipe-restart-btn {
+
+    margin-top: 18px !important;
+
+}
+
+/* 隱藏按鈕時不佔據空間 */
+#page-result #recipe-next-btn[hidden],
+#page-result #recipe-restart-btn[hidden] {
+
+    display: none !important;
+
+}
